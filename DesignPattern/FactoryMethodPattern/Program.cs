@@ -11,7 +11,7 @@ namespace FactoryMethodPattern
     {
         static void Main(string[] args)
         {
-            
+
             IFactory factory = new PlaneFactory();
             IMoveable m= factory.create();
             m.run();
