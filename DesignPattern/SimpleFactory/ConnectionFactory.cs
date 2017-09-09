@@ -9,7 +9,9 @@ namespace SimpleFactory
 {
     public class ConnectionFactory
     {
-        public static IDbConcrete GetConnection(DBType type) {
+
+        public static IDbConcrete GetConnection(SimpleFactory.DBType type)
+        {
             IDbConcrete db = null;
             switch (type)
             {

@@ -13,11 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern", "Observer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgePattern", "BridgePattern\BridgePattern.csproj", "{AB99CF29-C71A-4F11-9E81-7DE2FB2AE96C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandPattern", "CommandPattern\CommandPattern.csproj", "{0A3C9A75-257D-4A74-A0A3-AC1527681465}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyPattern", "ProxyPattern\ProxyPattern.csproj", "{41A8AFD7-9699-44F2-A992-5340E717BFCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decorator", "ZipLib\ZipLib\Decorator.csproj", "{863663A6-A2AF-4FAA-9FBD-75C8100420DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratePattern", "DecoratePattern\DecoratePattern\DecoratePattern.csproj", "{863663A6-A2AF-4FAA-9FBD-75C8100420DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorTests", "ZipLib\ZipLibTests\DecoratorTests.csproj", "{9A6F47AF-A80C-4338-B1CB-6CC3D43B693B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorTests", "DecoratePattern\DecoratePatternTests\DecoratorTests.csproj", "{9A6F47AF-A80C-4338-B1CB-6CC3D43B693B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 		{AB99CF29-C71A-4F11-9E81-7DE2FB2AE96C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB99CF29-C71A-4F11-9E81-7DE2FB2AE96C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB99CF29-C71A-4F11-9E81-7DE2FB2AE96C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A3C9A75-257D-4A74-A0A3-AC1527681465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A3C9A75-257D-4A74-A0A3-AC1527681465}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A3C9A75-257D-4A74-A0A3-AC1527681465}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A3C9A75-257D-4A74-A0A3-AC1527681465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41A8AFD7-9699-44F2-A992-5340E717BFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41A8AFD7-9699-44F2-A992-5340E717BFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41A8AFD7-9699-44F2-A992-5340E717BFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41A8AFD7-9699-44F2-A992-5340E717BFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{863663A6-A2AF-4FAA-9FBD-75C8100420DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{863663A6-A2AF-4FAA-9FBD-75C8100420DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{863663A6-A2AF-4FAA-9FBD-75C8100420DB}.Release|Any CPU.ActiveCfg = Release|Any CPU

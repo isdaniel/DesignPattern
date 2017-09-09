@@ -58,7 +58,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZipLib\Decorator.csproj">
+    <ProjectReference Include="..\DecoratePattern\DecoratePattern.csproj">
       <Project>{863663A6-A2AF-4FAA-9FBD-75C8100420DB}</Project>
       <Name>Decorator</Name>
     </ProjectReference>

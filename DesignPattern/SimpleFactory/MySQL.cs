@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleFactory
 {
-    public class MySQL:IDbConcrete
+    public class MySQL : IDbConcrete
     {
         public void GetDBConcrete()
         {
