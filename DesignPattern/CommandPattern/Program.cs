@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FactoryMethodPattern
+namespace CommandPattern
 {
-    public class Plane : IMoveable
+    class Program
     {
-
-        public void run()
+        static void Main(string[] args)
         {
-            Console.WriteLine("飛機飛飛飛~~");
+            
+            Console.ReadKey();
         }
     }
 }

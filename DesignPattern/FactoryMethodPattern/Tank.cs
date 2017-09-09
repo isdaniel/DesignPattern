@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace FactoryMethodPattern
 {
-    public class Plane : IMoveable
+    public class Tank : IFireable
     {
-
-        public void run()
+        public void Fire()
         {
-            Console.WriteLine("飛機飛飛飛~~");
+            Console.WriteLine("Tank Fire!!");
         }
     }
 }
