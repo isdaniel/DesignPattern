@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ProxyPattern
 {
-    public interface ISubject
+    public class UserModel
     {
-        void Work();
+        public long RowID { get; set; }
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
     }
 }
