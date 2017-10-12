@@ -47,6 +47,9 @@
     <Compile Include="MockUserData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticProxy\ISubject.cs" />
+    <Compile Include="StaticProxy\LogicProxyService.cs" />
+    <Compile Include="StaticProxy\Logicservice.cs" />
     <Compile Include="UserModel.cs" />
   </ItemGroup>
   <ItemGroup>
