@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicProxy\DynamicProxy.cs" />
+    <Compile Include="DynamicProxy\IInterception.cs" />
+    <Compile Include="DynamicProxy\LogAttribute.cs" />
+    <Compile Include="DynamicProxy\Logicservice.cs" />
     <Compile Include="Normal\LoginService.cs" />
     <Compile Include="MockUserData.cs" />
     <Compile Include="Program.cs" />
