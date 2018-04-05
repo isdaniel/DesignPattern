@@ -23,11 +23,15 @@ namespace ZipLib.Tests
         }
 
         [Test()]
-        public void Zip_ReadFile()
+        public void Zip_RaedFile()
         {
             string filePath = @"test.zip";
             string except = $"你好 123456 12@()!@ {newline} fsfd嘻嘻哈哈!!";
-            IProcess process = new ZipProcess(new FileProcess(), "123456", "Hell.log");
+            IProcess process = new ZipProcess(new FileProcess())
+            {
+                PassWord = "123456",
+                FileName = "Hell.log"
+            };
 
             process.Write(filePath, Encoding.UTF8.GetBytes(except));
             byte[] buffer = process.Read(filePath);

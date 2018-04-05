@@ -20,16 +20,19 @@ namespace ZipLib
 
     public abstract class ProcessBase : IProcess
     {
-        protected readonly IProcess _process;
-
-        public ProcessBase(IProcess process)
-        {
-            _process = process;
-        }
+        /// <summary>
+        /// 儲存被裝飾的物件
+        /// </summary>
+        protected IProcess _process;
 
         public abstract byte[] Read(string path);
 
         public abstract void Write(string writePath, byte[] buffer);
+
+        public virtual void SetDecorated(IProcess process)
+        {
+            _process = process;
+        }
     }
 
     /// <summary>
@@ -53,18 +56,13 @@ namespace ZipLib
     /// </summary>
     public class ZipProcess : ProcessBase
     {
-        private string _passWord;
-        private string _fileName;
+        public string PassWord { get; set; }
+        public string FileName { get; set; }
 
-        public ZipProcess(IProcess process) : this(process, "test", "test")
-        {
-        }
+        //public ZipProcess(IProcess process) : base(process)
+        //{
+        //}
 
-        public ZipProcess(IProcess process, string password, string fileName) : base(process)
-        {
-            _passWord = password;
-            _fileName = fileName;
-        }
 
         public override byte[] Read(string path)
         {
@@ -84,18 +82,18 @@ namespace ZipLib
             using (ZipOutputStream zipStream = new ZipOutputStream(outputMemStream))
             using (MemoryStream memStreamIn = new MemoryStream(buffer))
             {
-                zipStream.SetLevel(9); //0-9, 9 being the highest level of compression
+                zipStream.SetLevel(9); 
 
-                ZipEntry newEntry = new ZipEntry(_fileName);
+                ZipEntry newEntry = new ZipEntry(FileName);
                 newEntry.DateTime = DateTime.Now;
-                zipStream.Password = _passWord;
+                zipStream.Password = PassWord;
                 zipStream.PutNextEntry(newEntry);
 
                 StreamUtils.Copy(memStreamIn, zipStream, new byte[4096]);//將zip流搬到memoryStream中
                 zipStream.CloseEntry();
 
-                zipStream.IsStreamOwner = false;   // False stops the Close also Closing the underlying stream.
-                zipStream.Close();                 // Must finish the ZipOutputStream before using outputMemStream.
+                zipStream.IsStreamOwner = false;   
+                zipStream.Close();                
 
                 return outputMemStream.ToArray();
             }
@@ -113,11 +111,11 @@ namespace ZipLib
             {
                 memoryStream.Seek(0, SeekOrigin.Begin);
                 var zip = new ZipFile(memoryStream);
-                zip.Password = _passWord;
+                zip.Password = PassWord;
                 using (MemoryStream streamWriter = new MemoryStream())
                 {
                     byte[] bufferReader = new byte[4096];
-                    var file = zip.GetEntry(_fileName); //設置要去得的檔名
+                    var file = zip.GetEntry(FileName); //設置要去得的檔名
                     //如果有檔案
                     if (file != null)
                     {
@@ -134,19 +132,18 @@ namespace ZipLib
     /// <summary>
     /// Aes 加密裝飾器
     /// </summary>
-    public class AESCryptoFileDecorator : ProcessBase
+    public class AESCrypProcess : ProcessBase
     {
-        private byte[] key;
-        private byte[] iv;
         private AesCryptoServiceProvider aes;
 
-        public AESCryptoFileDecorator(IProcess fileProcess) : base(fileProcess)
+        public string AESKey { get; set; } = "1776D8E110124E75";
+        public string AESIV { get; set; } = "B890E7F6BA01C273";
+
+        public AESCrypProcess() 
         {
-            key = Encoding.UTF8.GetBytes("1776D8E110124E75");
-            iv = Encoding.UTF8.GetBytes("B890E7F6BA01C273");
             aes = new AesCryptoServiceProvider();
-            aes.Key = key;
-            aes.IV = iv;
+            aes.Key = Encoding.UTF8.GetBytes(AESKey);
+            aes.IV = Encoding.UTF8.GetBytes(AESIV);
         }
 
         public override byte[] Read(string path)
@@ -155,6 +152,11 @@ namespace ZipLib
             return DecryptData(encryptBytes);
         }
 
+        /// <summary>
+        /// 進行解密
+        /// </summary>
+        /// <param name="encryptBytes"></param>
+        /// <returns></returns>
         private byte[] DecryptData(byte[] encryptBytes)
         {
             byte[] outputBytes = null;
@@ -170,6 +172,11 @@ namespace ZipLib
             return outputBytes;
         }
 
+        /// <summary>
+        /// 裝飾者呼叫方法
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="data"></param>
         public override void Write(string path, byte[] data)
         {
             byte[] outputBytes = EncryptData(data);
@@ -194,17 +201,48 @@ namespace ZipLib
         }
     }
 
+    public class DecorateFactory
+    {
+        IProcess _original;
+
+        public DecorateFactory(IProcess original)
+        {
+            _original = original;
+        }
+
+        public DecorateFactory SetProcess(ProcessBase process)
+        {
+            process.SetDecorated(_original);
+            _original = process;
+            return this;
+        }
+
+        public IProcess GetProcess()
+        {
+            return _original;
+        }
+    }
+
     internal class Program
     {
-        private static string newline = Environment.NewLine;
-
         private static void Main(string[] args)
         {
-            string filePath = @"C:\Users\dog83\Desktop\test.zip";
-            string content = $"你好 123456 12@()!@ {newline} fsfd嘻嘻哈哈!!";
+            //內容
+            string filePath = @"C:\Users\daniel.shih\Desktop\test.zip";
+            string content = $"你好 123456 12@()!@ {Environment.NewLine} fsfd嘻嘻哈哈!!";
 
-            IProcess process = new AESCryptoFileDecorator(new ZipProcess(new FileProcess()));
-            process.Write(filePath, Encoding.UTF8.GetBytes(content));
+            //設置初始化的被裝飾者
+            DecorateFactory factroy = new DecorateFactory(new FileProcess());
+
+            //設置裝飾的順序
+            factroy.SetProcess(new AESCrypProcess())
+                   .SetProcess(new ZipProcess() { FileName = "1.txt",PassWord ="1234567"});
+
+            IProcess process = factroy.GetProcess();
+
+            byte[] data_buffer = Encoding.UTF8.GetBytes(content);
+            process.Write(filePath, data_buffer);
+
             byte[] buffer = process.Read(filePath);
             Console.WriteLine(Encoding.UTF8.GetString(buffer));
 
