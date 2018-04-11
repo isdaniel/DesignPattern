@@ -12,38 +12,13 @@ namespace ObserverPattern
     {
         static void Main(string[] args)
         {
-            Child c = new Child();
-            var group = ActionListenerGroup.GetActionListeners();
-            //c.AddActionListener(new Father());
-            //c.AddActionListener(new Mother());
-            c.AddActionListener(group);
-            c.weakup();
+
+            Youtuber youtuber = new Youtuber();
+            youtuber.AddsubScription(new Taiwanese(youtuber));
+
+            youtuber.Notify("頻道開啟");
 
             Console.ReadKey();
-        }
-    }
-
-    public class ActionListenerGroup
-    {
-        const string ASSEMBLYNAME = "ObserverPattern";
-        private static string _listeners = ConfigurationManager.AppSettings["Listeners"];
-
-        public static IList<IActionListener> GetActionListeners()
-        {
-            List<IActionListener> list = new List<IActionListener>();
-            string[] listeners = _listeners.Split(',');
-            foreach (var listener in listeners)
-            {
-                string className = ASSEMBLYNAME + "." + listener;
-                var obj = Assembly.Load(ASSEMBLYNAME).CreateInstance(className) as IActionListener;
-
-                if (obj != null)
-                {
-                    list.Add(obj);
-                }
-            }
-            return list;
-
         }
     }
 }

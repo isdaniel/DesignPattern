@@ -44,10 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Child.cs" />
-    <Compile Include="Mother.cs" />
-    <Compile Include="Father.cs" />
-    <Compile Include="IActionListener.cs" />
+    <Compile Include="Taiwanese.cs" />
+    <Compile Include="Youtuber.cs" />
+    <Compile Include="IObserveable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
