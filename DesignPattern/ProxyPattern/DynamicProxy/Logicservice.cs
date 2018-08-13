@@ -13,6 +13,7 @@ namespace ProxyPattern.DynamicProxy
         [Log]
         public bool IsAuth(UserModel user)
         {
+            Console.WriteLine("IsAuth");
             return userList.GetAllUser()
                  .Any(o => user.UserName == o.UserName && user.Password == o.Password);
         }

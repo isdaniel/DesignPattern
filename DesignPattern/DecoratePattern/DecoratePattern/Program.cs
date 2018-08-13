@@ -228,15 +228,16 @@ namespace ZipLib
         private static void Main(string[] args)
         {
             //內容
-            string filePath = @"C:\Users\daniel.shih\Desktop\test.zip";
+            string filePath = @"C:\test1.zip";
             string content = $"你好 123456 12@()!@ {Environment.NewLine} fsfd嘻嘻哈哈!!";
-
+            //new FileProcess().Write(filePath, Encoding.UTF8.GetBytes(content));
             //設置初始化的被裝飾者
             DecorateFactory factroy = new DecorateFactory(new FileProcess());
-
-            //設置裝飾的順序
-            factroy.SetProcess(new AESCrypProcess())
-                   .SetProcess(new ZipProcess() { FileName = "1.txt",PassWord ="1234567"});
+            
+            ////設置裝飾的順序
+            factroy
+                .SetProcess(new AESCrypProcess())
+                .SetProcess(new ZipProcess() { FileName ="1.txt",PassWord = "12345"});
 
             IProcess process = factroy.GetProcess();
 

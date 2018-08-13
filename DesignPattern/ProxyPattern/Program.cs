@@ -16,8 +16,8 @@ namespace ProxyPattern
             #region StaticProxy
 
             var testUser = new UserModel() { Password = "1234", RowID = 1, UserName = "test" };
-            LogicProxyService staticProxy = new LogicProxyService(new Logicservice());
-            staticProxy.IsAuth(testUser);
+            //LogicProxyService staticProxy = new LogicProxyService(new Logicservice());
+            //staticProxy.IsAuth(testUser);
 
             #endregion StaticProxy
 

@@ -27,12 +27,16 @@ namespace ZipLib.Tests
         {
             string filePath = @"test.zip";
             string except = $"你好 123456 12@()!@ {newline} fsfd嘻嘻哈哈!!";
-            IProcess process = new ZipProcess(new FileProcess())
+            DecorateFactory factory = new DecorateFactory(new FileProcess());
+
+            factory.SetProcess(new ZipProcess()
             {
                 PassWord = "123456",
                 FileName = "Hell.log"
-            };
+            });
 
+            IProcess process = factory.GetProcess();
+            
             process.Write(filePath, Encoding.UTF8.GetBytes(except));
             byte[] buffer = process.Read(filePath);
 
