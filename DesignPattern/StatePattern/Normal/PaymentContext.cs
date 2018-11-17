@@ -1,7 +1,5 @@
 ﻿namespace StatePattern.Normal
 {
-
-
     public class PaymentContext
     {
         Product _Item { get; set; }

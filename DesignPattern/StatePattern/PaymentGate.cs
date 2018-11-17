@@ -10,7 +10,7 @@ namespace StatePattern
     {
         Product _product;
 
-        internal IPaymentSatus CurrnetProceess { get; set; }
+        internal PaymentSatusBase CurrnetProceess { get; set; }
 
         public PaymentGate(Product p)
         {
@@ -39,29 +39,30 @@ namespace StatePattern
         }
     }
 
-    public interface IPaymentSatus
+    public abstract class PaymentSatusBase
     {
-        string Running(Product p);
+        protected PaymentGate _gate;
+        public abstract string Running(Product p);
 
-        string SetSatus(PayStatus s);
+        public abstract string SetSatus(PayStatus s);
     }
 
 
-    public class InitSatus : IPaymentSatus
+    public class InitSatus : PaymentSatusBase
     {
-        PaymentGate _gate;
+        
         public InitSatus(PaymentGate g)
         {
             _gate = g;
         }
 
-        public string Running(Product p)
+        public override string Running(Product p)
         {
             _gate.CurrnetProceess = new ProcessSatus(_gate);
             return "交易建立中...";
         }
 
-        public string SetSatus(PayStatus status)
+        public override string SetSatus(PayStatus status)
         {
           
             string result = "";
@@ -73,14 +74,13 @@ namespace StatePattern
             return result;
         }
     }
-    public class ProcessSatus : IPaymentSatus
+    public class ProcessSatus : PaymentSatusBase
     {
-        PaymentGate _gate;
         public ProcessSatus(PaymentGate g)
         {
             _gate = g;
         }
-        public string Running(Product p)
+        public override string Running(Product p)
         {
             string result = "交易中請稍後";
 
@@ -95,7 +95,7 @@ namespace StatePattern
             return result;
         }
 
-        public string SetSatus(PayStatus s)
+        public override string SetSatus(PayStatus s)
         {
             string result = string.Empty;
             if (s == PayStatus.Init)
@@ -103,19 +103,18 @@ namespace StatePattern
             return result;
         }
     }
-    public class CancelSatus : IPaymentSatus
+    public class CancelSatus : PaymentSatusBase
     {
-        PaymentGate _gate;
         public CancelSatus(PaymentGate g)
         {
             _gate = g;
         }
-        public string Running(Product p)
+        public override string Running(Product p)
         {
             return "交易取消完成";
         }
 
-        public string SetSatus(PayStatus s)
+        public override string SetSatus(PayStatus s)
         {
             string result = string.Empty;
             if (s == PayStatus.Init)
@@ -125,20 +124,19 @@ namespace StatePattern
     }
 
 
-    public class SuccessSatus : IPaymentSatus
+    public class SuccessSatus : PaymentSatusBase
     {
-        PaymentGate _gate;
         public SuccessSatus(PaymentGate g)
         {
             _gate = g;
         }
 
-        public string Running(Product p)
+        public override string Running(Product p)
         {
             return "交易完成";
         }
 
-        public string SetSatus(PayStatus s)
+        public override string SetSatus(PayStatus s)
         {
             string result = string.Empty;
             if (s == PayStatus.Init)

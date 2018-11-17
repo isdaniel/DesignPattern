@@ -29,8 +29,7 @@ namespace StatePattern
             p.Name = "電腦";
             p.Price = 300000;
 
-
-            PaymentContext context = new PaymentContext(p);
+            PaymentGate context = new PaymentGate(p);
             Console.WriteLine(context.RunProcess());
             Console.WriteLine(context.RunProcess());
             Console.WriteLine(context.RunProcess());
