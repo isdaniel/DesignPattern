@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace ZipLib
@@ -58,10 +62,6 @@ namespace ZipLib
     {
         public string PassWord { get; set; }
         public string FileName { get; set; }
-
-        //public ZipProcess(IProcess process) : base(process)
-        //{
-        //}
 
 
         public override byte[] Read(string path)
@@ -225,19 +225,53 @@ namespace ZipLib
 
     internal class Program
     {
+        //public static Bitmap Watermark(Image srce, string text, Font font, float angle)
+        //{
+        //    Bitmap dest = new Bitmap(srce);
+        //    var color = Color.FromArgb(120, Color.Black);
+        //    using (var gr = Graphics.FromImage(dest))
+        //    using (var gp = new GraphicsPath())
+        //    using (var pen = new Pen(color, 5))
+        //    {
+        //        var sf = new StringFormat();
+        //        sf.LineAlignment = sf.Alignment = StringAlignment.Center;
+        //        gp.AddString(text, font.FontFamily, (int)font.Style, font.SizeInPoints,
+        //            new Rectangle(-dest.Width / 2, -dest.Height / 2, dest.Width, dest.Height),
+        //            sf);
+        //        gr.TranslateTransform(dest.Width / 2, dest.Height / 2);
+        //        gr.RotateTransform(-angle);
+        //        gr.DrawPath(pen, gp);
+        //    }
+        //    return dest;
+        //}
+
+        //private static byte[] GetBuffer()
+        //{
+        //    using (FileStream fs = new FileStream(@"C:\Users\Daniel\Desktop\P.png", FileMode.Open))
+        //    using (MemoryStream ms = new MemoryStream())
+        //    {
+        //        Bitmap bitmap = new Bitmap(fs);
+        //        bitmap = Watermark(bitmap, "DEMO", new Font(FontFamily.GenericSerif, 200), 45);
+        //        bitmap.Save(ms, ImageFormat.Tiff);
+
+        //        return ms.ToArray();
+        //    }
+        //}
+
         private static void Main(string[] args)
         {
+
             //內容
             string filePath = @"C:\test1.zip";
             string content = $"你好 123456 12@()!@ {Environment.NewLine} fsfd嘻嘻哈哈!!";
             //new FileProcess().Write(filePath, Encoding.UTF8.GetBytes(content));
             //設置初始化的被裝飾者
             DecorateFactory factroy = new DecorateFactory(new FileProcess());
-            
+
             ////設置裝飾的順序
             factroy
                 .SetProcess(new AESCrypProcess())
-                .SetProcess(new ZipProcess() { FileName ="1.txt",PassWord = "12345"});
+                .SetProcess(new ZipProcess() { FileName = "1.txt", PassWord = "12345" });
 
             IProcess process = factroy.GetProcess();
 
