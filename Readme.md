@@ -8,3 +8,5 @@
 * [轉接器模式(AdapterPattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/AdpterPattern)
 
 * [中介者模式(MediatorPattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/MediatorPattern)
+
+* [狀態者模式(State Pattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/StatePattern)
