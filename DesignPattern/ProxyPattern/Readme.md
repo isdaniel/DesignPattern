@@ -2,14 +2,13 @@
 
 前言：
 
-1. [什麼是代理模式,為什麼要用他](#什麼是代理模式,為什麼要用他) 
-2. [利用.NET實現靜態代理](#利用.NET實現靜態代理) 
-3. [利用.NET實現動態代理](#利用.NET實現動態代理) 
-
+1. [什麼是代理模式,為什麼要用他](##什麼是代理模式,為什麼要用他)
+2. [利用.NET實現靜態代理](##利用.NET實現靜態代理)
+3. [利用.NET實現動態代理](##利用.NET實現動態代理)
 
 ----
 
-# 什麼是代理模式,為什麼要用他
+## 什麼是代理模式,為什麼要用他
 
 大家在寫程式時一定常常遇到要寫日誌，權限驗證....等等和主要邏輯不相干的事情
 
@@ -25,7 +24,7 @@ Asp.net MVC的`ActionFilterAttribute`就是Aop一個很好的例子
 
 我會用已現實生活中常常遇到的 **[登入系統]** 來跟大家介紹代理模式的奧妙
 
----- 
+----
 
 ## 初版程式碼
 
@@ -45,7 +44,6 @@ public bool IsUserAuth(UserModel user)
 
 > 如果沒使用動態代理會怎麼來寫Log呢?
 
- 
 ```c#
 /// <summary>
 /// 檢查用戶是否合法
@@ -63,12 +61,11 @@ public bool IsUserAuth(UserModel user)
 在執行前後寫上Log，但這樣讓程式碼可讀性變差了點，因為Log和檢查使用者是否登入完全沒關係!
 
 那我們要怎麼做才可讓程式碼Clear一點呢?
-              
 在下面我會介紹靜態代理模式，來解決上面的問題
 
------
+----
 
-# 利用.NET實現靜態代理
+## 利用.NET實現靜態代理
 
 我們先理解業務在哪邊，業務在下面紅框的部分 `Console.log` 只是記錄此次驗證的資料
 
@@ -77,7 +74,6 @@ public bool IsUserAuth(UserModel user)
 ![img](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/17bcea05-79ca-46d6-8893-d1c4ae124d4f/1507791353_49889.png)
 
 > 在我心中**介面代表能力，抽象類別代表這一類事物**
-
 
 因為在此次需求驗證是一種能力，所以我提出來成一個介面
 
@@ -90,8 +86,6 @@ public interface ISubject
 
 有兩個類別 `LogicProxyService`和`Logicservice`都實現 `ISubject`
 因為不管是代理類別和被代理類別都擁有檢核能力
-
- 
 
 我們就可將主要邏輯寫在`Logicservice `
 
@@ -111,7 +105,7 @@ public class Logicservice : ISubject
 這邊我使用依賴注入的建構子注入，讓外界決定要注入哪個類別（需繼承ISubject）
 可增加未來擴展性和移植性
  撰寫日誌寫在 `LogicProxyService`
- 
+
 ```c#
 public class LogicProxyService : ISubject
 {
@@ -138,7 +132,7 @@ public class LogicProxyService : ISubject
 #region StaticProxy
 var testUser = new UserModel() { Password = "1234", RowID = 1, UserName = "test" };
 LogicProxyService staticProxy = new LogicProxyService(new Logicservice());
-staticProxy.IsAuth(testUser); 
+staticProxy.IsAuth(testUser);
 #endregion
 ```
 
@@ -153,9 +147,9 @@ staticProxy.IsAuth(testUser);
 
 但別擔心在下面會介紹**[動態代理模式]**來解決此問題
 
------
+----
 
-# 利用.NET實現動態代理
+## 利用.NET實現動態代理
 
 靜態代理可以將執行邏輯和寫日誌這兩個動作分離乾淨
 
@@ -177,7 +171,7 @@ A：如果可以攔截或獲取方法實行的瞬間並在執行前後加上我�
 
 1. 介面
 2. 繼承於`MarshalByRefObject`
-3. 
+
 廢話不多說先附上程式碼 
 
 ```c#
@@ -302,4 +296,3 @@ obj.IsAuth(testUser);
 ```
 
 另外小弟有參考ASP.Net原始碼來製作動態的攔截器框架 [AwesomeProxy.Net](https://github.com/isdaniel/AwesomeProxy.Net) ，放在github上面歡迎大家討論
-
