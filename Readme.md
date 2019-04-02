@@ -14,3 +14,5 @@
 * [樣板模式(TemplatePattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/TemplatePattern)
   
 * [代理模式(ProxyPattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/ProxyPattern)
+
+* [橋接模式(BridgePattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/BridgePattern)
