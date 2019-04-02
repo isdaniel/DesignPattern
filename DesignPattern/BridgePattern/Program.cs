@@ -10,7 +10,7 @@ namespace BridgePattern
     {
         static void Main(string[] args)
         {
-            NickBag nick = new NickBag(new ColorRed());
+            AdidasBag nick = new AdidasBag(new ColorBlue());
             nick.GetBag();
             Console.ReadKey();
         }

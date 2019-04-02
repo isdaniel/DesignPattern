@@ -17,7 +17,7 @@
 
 AOP(面向切面编程)可以有效的幫助我們解決上面問題，降低模塊間耦合度，理念來自於代理模式...
 
-Asp.net MVC的`ActionFilterAttribute`就是Aop一個很好的例子
+Asp dot net MVC的`ActionFilterAttribute`就是Aop一個很好的例子
 
 只要在Action上加一個自己做的Filter 就可在方法執行前後做事情，且不更動原來程式碼
 
