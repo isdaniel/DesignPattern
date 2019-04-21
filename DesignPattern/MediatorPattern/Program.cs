@@ -22,7 +22,7 @@ namespace MediatorPattern
             pm.DbAdmin = DBA1;  //PM知道RD
 
             //現在DBA和RD只需要傳訊息就可將訊息轉到需要知道的人
-            RD1.Requirement("DB modify Requestment.");
+            RD1.Requirement("DB modify Requirement.");
             DBA1.Requirement("DB Process doing.");
 
             Console.ReadKey();
