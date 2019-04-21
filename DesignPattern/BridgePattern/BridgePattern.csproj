@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddidasBag.cs" />
+    <Compile Include="AdidasBag.cs" />
     <Compile Include="ColorBase.cs" />
     <Compile Include="BagBase.cs" />
     <Compile Include="ColorBlue.cs" />

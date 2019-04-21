@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace BridgePattern
 {
-    public class AddidasBag : BagBase
+    public class AdidasBag : BagBase
     {
-        public AddidasBag(ColorBase color) : base(color)
+        public AdidasBag(ColorBase color) : base(color)
         {
         }
 
         public override void GetBag()
         {
-            Console.WriteLine($"It is Addidas Bag,Color is {color.Color()}");
+            Console.WriteLine($"It is Adidas Bag,Color is {color.Color()}");
         }
     }
 }
