@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,8 +44,8 @@ namespace CommandPattern
     }
 
     public interface ICommand {
-        void Excute();
-        void UnExcute();
+        void Execute();
+        void UnExecute();
     }
 
     public class Invoker
@@ -57,7 +56,7 @@ namespace CommandPattern
         {
             foreach (var command in _commandList)
             {
-                command.Excute();
+                command.Execute();
             }
         }
 
@@ -68,7 +67,7 @@ namespace CommandPattern
 
         public void UnExcute() {
             ICommand current = _commandList.Pop();
-            current.UnExcute();
+            current.UnExecute();
         }
     }
 
@@ -79,12 +78,12 @@ namespace CommandPattern
         public LogCommand(KeyboradInfo _info) {
             Info = _info;
         }
-        public void Excute() 
+        public void Execute() 
         {
             Console.WriteLine($"Create Date:{Info.CreateDate.ToLongTimeString()} Data:{Info.Name}");
         }
 
-        public void UnExcute()
+        public void UnExecute()
         {
             Console.WriteLine($"Data haskk Remove {Info.Name}");
         }
