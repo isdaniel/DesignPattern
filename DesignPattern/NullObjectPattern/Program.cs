@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace NullObjectPattern
 {
@@ -10,27 +10,18 @@ namespace NullObjectPattern
     {
         static void Main(string[] args)
         {
-
+            CartModel model = null;
+            Console.WriteLine(Calculate(model));
             Console.ReadKey();
         }
-    }
 
-    
-
-    public class PaymentServiceNormal
-    {
-        public decimal calculate(CartModel model)
+        static decimal Calculate(CartModel model)
         {
-            decimal result = 0m;
-            if (model == null)
-                return result;
-
-            result = model.Items.Sum(x => x.Price);
-
-            if (result > 400m)
-                result *= 0.8m;
-
-            return result;
+            var paymentService = model == null
+                ? (IPaymentService)
+                new NullPayment()
+                : new PaymentService();
+            return paymentService.calculate(model);
         }
     }
 }
