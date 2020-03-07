@@ -10,8 +10,7 @@ Simple Factory,Factory,簡單工廠模式
 
 UML圖:
 
-
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/206ced04-cd0a-49e1-8ac1-51ac7a3f6b75/1495419260_75482.png "Optional title")
+![Alt text](https://raw.githubusercontent.com/isdaniel/DesignPattern/master/DesignPattern/img/simpleFactory/simpleFatory.png)
 
 定義一個 介面`IDbConcrete` 裡面提供 連接資料庫之動作
 

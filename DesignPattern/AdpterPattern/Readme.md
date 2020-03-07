@@ -6,13 +6,13 @@
 
 前一陣子出國去韓國玩，有去韓國的朋友都知道他們的插座和台灣的插座不一樣 而且電壓是220V，到這我也是矇了
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/fdbe4057-b2bd-40a8-8e62-150b8bac4f35/1492506304_59516.jpg "Optional title")
+![Alt text](../img/Adpter/Plugin.jpg "Optional title")
 
 (圖片來源:網路截圖)
 
 所幸導遊有給我們插頭的轉接器，讓我們用可以幫我解決
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/fdbe4057-b2bd-40a8-8e62-150b8bac4f35/1492506352_49069.jpg "Optional title")
+![Alt text](../img/Adpter/Adaper.jpg "Optional title")
 
 (圖片來源:網路截圖)
 

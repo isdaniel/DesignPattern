@@ -17,33 +17,25 @@
  
 可發現需求一直在對於文字內容操作順序做變化,但他們核心離不開對於文字內容的操作
 
- 
-
 這種情境很適合來使用 [`裝飾者模式`]
  
-
 裝飾者模式 有兩個主要腳色 **被裝飾物件(Decorated)** & **裝飾物件(Decorator)**
- 
-
- 
 
 **被裝飾物件(Decorated)** 就像蛋糕的一樣, **裝飾物件(Decorator)**就是上的水果,奶油,巧克力...等等裝飾物品
 
 一般先有蛋糕被裝飾物件(Decorated),後再將裝飾物品加上去裝飾物件(Decorator)
 
- 
-
 **被裝飾物件(Decorated)** 如下圖  蛋糕的原型
 
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/4bc56f03-a1e1-4504-bea3-7cb02a8aaa21/1522894727_00158.jpg "Optional title")
 
+![Alt text](https://raw.githubusercontent.com/isdaniel/DesignPattern/master/DesignPattern/img/Decorator/688215012311271.jpg "Optional title")
 
 > 將物件有效的往上附加職責,不動到內部的程式碼, 在原來職責上附加額外的職責
 
 裝飾者模式運作就像 俄羅斯娃娃一樣 一層包一層
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/4bc56f03-a1e1-4504-bea3-7cb02a8aaa21/1522826815_28596.jpg "Optional title")
+![Alt text](https://raw.githubusercontent.com/isdaniel/DesignPattern/master/DesignPattern/img/Decorator/0c8920b50c8eea2da95c25a033f19872.jpg "Optional title")
 
 -----
 
@@ -234,7 +226,7 @@
 
 如下圖
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/4bc56f03-a1e1-4504-bea3-7cb02a8aaa21/1522828936_73575.png "Optional title")
+![Alt text](https://raw.githubusercontent.com/isdaniel/DesignPattern/master/DesignPattern/img/Decorator/decorator.png "Optional title")
 
 
 使用就可很清晰來用
