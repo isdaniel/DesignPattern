@@ -37,9 +37,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompareInt.cs" />
-    <Compile Include="ComparePerson.cs" />
-    <Compile Include="ICompareStrategy.cs" />
+    <Compile Include="Strategy\CompareInt.cs" />
+    <Compile Include="Strategy\ComparePerson.cs" />
+    <Compile Include="Strategy\ICompareStrategy.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Normal\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

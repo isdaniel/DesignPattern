@@ -1,4 +1,4 @@
-﻿namespace StrategyPattern
+﻿namespace StrategyPattern.Strategy
 {
     public class CompareInt : ICompareStrategy<int>
     {

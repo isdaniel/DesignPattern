@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StrategyPattern.Strategy;
 
 namespace StrategyPattern.Tests
 {
@@ -18,7 +19,7 @@ namespace StrategyPattern.Tests
 
             int[] expect = new[] {1, 2, 3, 4, 5, 10};
 
-            int[] act = arrange.SortBy(new CompareInt()).ToArray();
+            int[] act = arrange.SortByStrategy(new CompareInt()).ToArray();
 
             CollectionAssert.AreEqual(expect, act);
         }
@@ -30,7 +31,7 @@ namespace StrategyPattern.Tests
 
             int[] expect = new[] { 1, 2, 3, 4, 5 };
 
-            int[] act = arrange.SortBy(new CompareInt()).ToArray();
+            int[] act = arrange.SortByStrategy(new CompareInt()).ToArray();
 
             CollectionAssert.AreEqual(expect, act);
         }

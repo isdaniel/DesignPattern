@@ -1,4 +1,4 @@
-﻿namespace StrategyPattern
+﻿namespace StrategyPattern.Strategy
 {
     public interface ICompareStrategy<in T>
     {
