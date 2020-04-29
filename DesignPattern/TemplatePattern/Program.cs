@@ -12,9 +12,13 @@ namespace TemplatePattern
         {
             
             UnitCounter unitCounter = new UnitCounter();
-            unitCounter.UnitTest();
-            unitCounter.UnitTest();
-            unitCounter.UnitTest();
+            unitCounter.UnitTest(new List<Func<bool>>()
+            {
+                ()=>true,
+                ()=>false,
+                ()=>false,
+                ()=>true
+            });
 
             Console.ReadKey();
         }

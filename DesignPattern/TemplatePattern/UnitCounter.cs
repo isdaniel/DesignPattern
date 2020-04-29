@@ -4,26 +4,14 @@ namespace TemplatePattern
 {
     public class UnitCounter : UnitFlowBase
     {
-        private int _classCounter = 0;
-
-        private int _methodCounter = 0;
-
-        protected override void SetUpClass()
+        protected override void SetUp()
         {
-            _classCounter++;
+            Console.WriteLine("Set up UnitCounter thing.");
         }
 
-        protected override void SetUpUnitTest()
+        protected override void OneTimeSetUp()
         {
-            _methodCounter++;
-        }
-
-        protected override bool Execute()
-        {
-            Console.WriteLine($"ClassCounter : {_classCounter}");
-            Console.WriteLine($"MethodCounter: { _methodCounter}");
-
-            return true;
+            Console.WriteLine("OneTimeSetUp!!");
         }
     }
 }

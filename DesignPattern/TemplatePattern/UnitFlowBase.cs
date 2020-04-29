@@ -1,28 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TemplatePattern
 {
     public abstract class UnitFlowBase
     {
-        protected UnitFlowBase()
-        {
-            SetUpClass();
-        }
-
-        protected virtual void SetUpClass()
+        protected virtual void OneTimeSetUp()
         {
         }
 
-        protected virtual void SetUpUnitTest()
+        protected virtual void Dispose()
         {
         }
 
-        protected abstract bool Execute();
-
-        public void UnitTest()
+        protected virtual void SetUp()
         {
-            SetUpUnitTest();
-            Console.WriteLine(Execute() ? "Assert Successful." : "Assert Fail.");
+        }
+
+        protected virtual void TearDown()
+        {
+        }
+
+        public void UnitTest(IEnumerable<Func<bool>> testCases)
+        {
+            OneTimeSetUp();
+            foreach (var testCase in testCases)
+            {
+                SetUp();
+                Console.WriteLine(testCase() ? "Assert Successful." : "Assert Fail.");
+                TearDown();
+            }
+            Dispose();
         }
     }
 }
