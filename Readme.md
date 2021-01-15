@@ -16,3 +16,5 @@
 * [代理模式(ProxyPattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/ProxyPattern)
 
 * [橋接模式(BridgePattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/BridgePattern)
+
+* [Null Object Pattern)](https://github.com/isdaniel/DesignPattern/tree/master/DesignPattern/NullObjectPattern)
