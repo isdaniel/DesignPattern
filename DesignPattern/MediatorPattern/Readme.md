@@ -6,12 +6,12 @@
 
 在現實中如果組織有一定規模可能構通如下圖那般複
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/f718d961-2f8b-46ac-a2f7-b95af802f23a/1549790323_53498.png "Optional title")
+![Alt text](https://dotblogsfile.blob.core.windows.net/user/%E4%B9%9D%E6%A1%83/f718d961-2f8b-46ac-a2f7-b95af802f23a/1549790323_53498.png "Optional title")
 
 
 如果有一個人或組織負責幫大家協助溝通，就可解決上面複雜問題
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/f718d961-2f8b-46ac-a2f7-b95af802f23a/1549790493_52417.png "Optional title")
+![Alt text](https://dotblogsfile.blob.core.windows.net/user/%E4%B9%9D%E6%A1%83/f718d961-2f8b-46ac-a2f7-b95af802f23a/1549790493_52417.png "Optional title")
 
 
 這就是我們這次的核心中介者
