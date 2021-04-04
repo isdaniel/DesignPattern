@@ -116,7 +116,7 @@
 2. `PM`(中介者)知道`DBA`和`RD`(同事者)存在
 3. `DBA`和`RD`不用知道對方存在但卻可以互相傳遞訊息(因為PM已經幫助我們解耦合了)
 
-![Alt text](https://az787680.vo.msecnd.net/user/%E4%B9%9D%E6%A1%83/f718d961-2f8b-46ac-a2f7-b95af802f23a/1549792143_37531.png "Optional title")
+![Alt text](https://dotblogsfile.blob.core.windows.net/user/%E4%B9%9D%E6%A1%83/f718d961-2f8b-46ac-a2f7-b95af802f23a/1549792143_37531.png "Optional title")
 
 > UML圖 (有標示相對應的角色關係)
 
